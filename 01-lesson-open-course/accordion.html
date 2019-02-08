@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Accordion</title>
+
+	<style>
+
+		.ac-accordion {
+			position: fixed;
+			top: 15%;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 460px;
+
+			font-family: sans-serif;
+			font-size: 15px;
+			font-weight: 400;
+			line-height: 1.2;
+
+			color: #4f4f4f;
+		}
+
+		.ac-accordion__panel {
+			margin: 8px 0;
+		}
+
+		.ac-accordion__panel-header {
+			position: relative;
+
+			padding: 11px 60px 13px 22px;
+			border-radius: 21px;
+
+			font-weight: 700;
+
+			color: #fff;
+			background-color: #696666;
+
+			transition: background-color .5s ease;
+			cursor: pointer;
+		}
+
+		.ac-accordion__panel-header:after {
+			content: '';
+			position: absolute;
+			right: 23px;
+			top: 15px;
+
+			display: block;
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 12px 7px 0 7px;
+			border-color: #ff8663 transparent transparent transparent;
+
+			transition: transform .2s ease;
+		}
+
+		.ac-accordion__panel:nth-child(even) .ac-accordion__panel-header {
+			color: inherit;
+			background-color: #e7e7e7;
+		}
+
+		.ac-accordion .ac-accordion__panel--active .ac-accordion__panel-header {
+			color: #fff;
+			background-color: #ff8663;
+		}
+
+		.ac-accordion__panel--active > .ac-accordion__panel-header:after {
+			border-color: #fff transparent transparent transparent;
+			transform: rotate(180deg);
+		}
+
+		.ac-accordion__panel-body {
+			position: relative;
+			z-index: -1;
+
+			margin-top: -20px;
+			padding: 30px 22px 15px;
+
+			border-bottom-left-radius: 21px;
+			border-bottom-right-radius: 21px;
+
+			line-height: 1.4;
+
+			background-color: #e7e7e7;
+		}
+
+		.ac-accordion .ac-accordion__panel-body {
+			display : none;
+		}
+
+		.ac-accordion .ac-accordion__panel--active .ac-accordion__panel-body  {
+			display : block;
+		}
+
+	</style>
+</head>
+<body>
+
+	<div id="ac-accordion" class="ac-accordion">
+
+		<div class="ac-accordion__panel  ac-accordion__panel--active">
+			<!-- first panel -->
+			<div class="ac-accordion__panel-header">Основы языка и как на нём говорить правильно</div>
+			<div class="ac-accordion__panel-body">
+				Лексическая структура <br />
+				Типы данных, значения и переменные <br />
+				Выражения и операторы инструкции
+			</div>
+		</div>
+
+		<div class="ac-accordion__panel">
+			<!-- second panel -->
+			<div class="ac-accordion__panel-header">Функции</div>
+			<div class="ac-accordion__panel-body">
+				Lorem ipsum dolor <br />
+				sit amet consectetur, adipisicing elit. <br />
+				Deleniti accusantium eligendi doloribus nihil quo
+			</div>
+		</div>
+
+		<div class="ac-accordion__panel">
+			<!-- third panel -->
+			<div class="ac-accordion__panel-header">Обработка ошибок и отладка</div>
+			<div class="ac-accordion__panel-body">
+				Deleniti accusantium <br />
+				eligendi doloribus nihil quo <br />
+				Lorem ipsum dolor sit amet
+			</div>
+		</div>
+
+		<div class="ac-accordion__panel">
+			<!-- fourth panel -->
+			<div class="ac-accordion__panel-header">Объекты и массивы</div>
+			<div class="ac-accordion__panel-body">
+				Culpa soluta quidem <br />
+				sit harum et dolor architecto <br />
+				neque explicabo pariatur modi non
+			</div>
+		</div>
+
+		<div class="ac-accordion__panel">
+			<!-- fifth panel -->
+			<div class="ac-accordion__panel-header">События</div>
+			<div class="ac-accordion__panel-body">
+				vel quas quisquam illo <br />
+				natus nulla assumenda molestias. <br />
+				Impedit vero ipsa perferendis molestias
+			</div>
+		</div>
+
+	</div><!-- /#accordion -->
+
+	<script>
+		function initAccordion(accordionElem) {
+
+			//when panel is clicked, handlePanelClick is called.
+			function handlePanelClick(event) {
+				showPanel(event.currentTarget);
+			}
+
+			//Hide currentPanel and show new panel.
+			function showPanel(panel) {
+				//Hide current one. First time it will be null.
+				var expandedPanel = accordionElem.querySelector(".ac-accordion__panel--active");
+				if (expandedPanel) {
+					expandedPanel.classList.remove("ac-accordion__panel--active");
+				}
+				//Show new one
+				panel.classList.add("ac-accordion__panel--active");
+			}
+			var allPanelElems = accordionElem.querySelectorAll(".ac-accordion__panel");
+			for (var i = 0, len = allPanelElems.length; i < len; i++) {
+				allPanelElems[i].addEventListener("click", handlePanelClick);
+			}
+			//By Default Show first panel
+			showPanel(allPanelElems[0])
+		}
+
+		initAccordion(document.getElementById("ac-accordion"));
+	</script>
+</body>
+</html>
