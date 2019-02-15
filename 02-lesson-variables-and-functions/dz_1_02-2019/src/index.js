@@ -12,10 +12,9 @@
 
  Другими словами: функция должна возвращать в неизменном виде то, что поступает ей на вход
  */
-function returnFirstArgument(param) {
-    return param;
-}
-console.log( 'Task 1 result: ' + returnFirstArgument() );
+const returnFirstArgument = param => param;
+
+console.log('Task 1 result: ' + returnFirstArgument('param-pam-pam'));
 
 /*
  Задание 2:
@@ -31,19 +30,22 @@ console.log( 'Task 1 result: ' + returnFirstArgument() );
  Пример:
    sumWithDefaults(10) вернет 110
  */
-function sumWithDefaults(a, b) {
-    if (b === undefined) {
-        b = 100;
-    }
-    return a + b;
-}
-console.log( 'Task 2.1 result: ' + sumWithDefaults(10, 20) );
-console.log( 'Task 2.1* result: ' + sumWithDefaults(10) );
+const sumWithDefaults = (a, b = 100) => a + b;
 
-// function sumWithDefaults(a, b=100) {
-// return a + b;
+console.log('Task 2.1 result: ' + sumWithDefaults(10, 20));
+console.log('Task 2.1* result: ' + sumWithDefaults(10));
+
+// function sumWithDefaults(a, b) {
+//     if (b === undefined) {
+//         b = 100;
+//     }
+//     return a + b;
 // }
-// console.log('Task 2.1* ES6 result: ' + sumWithDefaults(10));
+// console.log( 'Task 2.1 result: ' + sumWithDefaults(10, 20) );
+// console.log( 'Task 2.1* result: ' + sumWithDefaults(10) );
+
+
+
 
 /*
  Задание 3:
@@ -53,10 +55,9 @@ console.log( 'Task 2.1* result: ' + sumWithDefaults(10) );
  Пример:
    returnFnResult(() => 'привет') вернет 'привет'
  */
-function returnFnResult(fn) {
-    return fn();
-}
-var foo = () => console.log('Task 3 result: ' + 'calling function result');
+const returnFnResult = fn => fn();
+
+var foo = () => console.log("Task 3 result: " + "calling function result");
 returnFnResult(foo);
 
 /*
@@ -72,20 +73,13 @@ returnFnResult(foo);
    console.log(f()); // выведет 12
    console.log(f()); // выведет 13
  */
-function returnCounter(number) {
-    var counter = number;
+const returnCounter = n => () => ++n;
 
-    // return function () {
-    // return ++counter;
-    // };
-
-    return () => ++counter;
-}
 var f = returnCounter(10);
 
-console.log('Task 4 result: ' + f());
-console.log('Task 4 result: ' + f());
-console.log('Task 4 result: ' + f());
+console.log("Task 4 result: " + f());
+console.log("Task 4 result: " + f());
+console.log("Task 4 result: " + f());
 
 /*
  Задание 5 *:
@@ -96,17 +90,9 @@ console.log('Task 4 result: ' + f());
  Пример:
    returnArgumentsArray(1, 2, 3) вернет [1, 2, 3]
  */
-function returnArgumentsArray() {
-    let array = [];
+const returnArgumentsArray = (...args) => args;
 
-    for (let i = 0; i < arguments.length; i++) {
-        array.push(arguments[i])
-    }
-
-    return array;
-}
-
-console.log( 'Task 5 result: ' + returnArgumentsArray(1, 2, 3));
+console.log(returnArgumentsArray(1, 2, 3));
 
 /*
  Задание 6 *:
