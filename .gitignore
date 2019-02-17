@@ -4,6 +4,11 @@
 out
 gen
 
+# VS Code project files
+.vscode
+
+
 *.txt
 *.pdf
 *.psd
+*.zip
