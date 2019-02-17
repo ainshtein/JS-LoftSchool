@@ -7,11 +7,11 @@
  Посмотрите как работает forEach и повторите это поведение для массива, который будет передан в параметре array
  */
 function forEach(array, fn) {
-    for( let i=0; i<array.length; i++ ) {
-			fn( array[i], i, array );
-		}
+  for( let i=0; i<array.length; i++ ) {
+    fn( array[i], i, array );
+  }
 
-	return;
+  return;
 }
 
 const arr = [1, 2, 3, 4, 5];
@@ -52,7 +52,7 @@ function reduce(array, fn, initial) {
   let result = initial || array[i++];
 
   while (i < array.length) {
-		result = fn(result, array[i], i, array);
+    result = fn(result, array[i], i, array);
     i++;
   }
 
@@ -83,9 +83,9 @@ function upperProps(obj) {
 }
 
 const human = {
-	name: 'Andrej',
-	secondName: 'Salo',
-	age: 30
+  name: 'Andrej',
+  secondName: 'Salo',
+  age: 30
 }
 
 console.log(upperProps(human));
