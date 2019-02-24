@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div></div>привет<p></p>loftchool!!!
+
+  <script>
+  /*
+   Задание 6:
+
+   Выполнить предудыщее задание с использование рекурсии - то есть необходимо заходить внутрь каждого дочернего элемента (углубляться в дерево)
+
+   Так же будьте внимательны при удалении узлов, т.к. можно получить неожиданное поведение при переборе узлов
+
+   Пример:
+     После выполнения функции, дерево <span> <div> <b>привет</b> </div> <p>loftchool</p> !!!</span>
+     должно быть преобразовано в <span><div><b></b></div><p></p></span>
+   */
+    function deleteTextNodesRecursive(where) {
+      let counter = 0;
+
+      while(counter < where.childNodes.length) {
+
+      }
+    }
+
+    function deleteTextNodes(where) {
+      for(let i=0; i<where.childNodes.length; i++){
+        if(where.childNodes[i].nodeType === 3) {
+          where.removeChild(where.childNodes[i]);
+        }
+      }
+    }
+
+    deleteTextNodes(document.body);
+    console.log(document.body.childNodes);
+  </script>
+</body>
+</html>
