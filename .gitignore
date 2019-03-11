@@ -12,3 +12,5 @@ gen
 *.pdf
 *.psd
 *.zip
+
+all-tests/
